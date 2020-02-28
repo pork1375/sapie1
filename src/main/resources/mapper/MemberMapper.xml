@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.member.dao.MemberMapper">
+	<!-- 전체회원목록 -->
+	<select id="memberlist" resultType="member">
+		select * from profile 
+		order by no desc
+		limit #{start} , #{end}
+		
+		
+		
+	</select>
+	<select id="testcount" resultType="int">
+		select count(*) from profile
+	</select>
+
+	<insert id="memberinsert" parameterType="member">
+		insert into profile
+		set
+		ul = #{ul}
+		, name = #{name}
+		, ename = #{ename}
+		, id = #{id}
+		, email = #{email}
+		, birth = #{birth}
+		, yin = #{yin}
+		, phon = #{phon}
+		, job = #{job}
+		, address = #{address}
+		, motive = #{motive}
+		, division = #{division}
+		, servicestage = #{servicestage}
+		, translation = #{translation}
+		, staff = #{staff}
+		, joined = now()
+	</insert>
+
+	<select id="memberDetail" resultType="member">
+		select * from profile where
+		no = #{no}
+	</select>
+
+
+	<update id="memberUpdate" parameterType="member">
+		UPDATE profile SET
+		servicestage = #{servicestage}
+		,translation = #{translation}
+		,ul = #{ul}
+		,staff = #{staff}
+		WHERE no= #{no}
+	</update>
+	
+	
+	
+	
+<!-- 	<update id="membertype" parameterType="member">일시정지 삭제  활동재개테스트
+			UPDATE profile SET
+		type = #{type}
+		WHERE no= #{no}
+	</update> -->
+
+	<!-- <delete id="memberDelete"> delete from profile where no = #{no} </delete> -->
+
+</mapper>

@@ -1,0 +1,22 @@
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+      
+  thymeleaf:
+    enabled: false
+    
+mybatis:
+  type-aliases-package: com.test.member
+  mapper-locations: mapper/*.xml
+  configuration: 
+    mapUnderscoreToCamelCase: true
+---  
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: 1234
